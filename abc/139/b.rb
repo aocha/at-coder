@@ -1,19 +1,13 @@
 A, B = gets.split.map(&:to_i)
-cnt = 0
+outlet = 1
+ans = 0
 
-if B == 1
-  puts 0
-elsif A >= B
-  puts 1
-else
-  loop do
-    if (A - 1) * cnt + A >= B
-      cnt += 1
-      break
-    end
-
-    cnt += 1
-  end
-
-  puts cnt
+# 差込口がB以上になるまで
+while outlet < B do
+  # 差込口を1口使ってA口増やす
+  outlet += (A - 1)
+  # 電源タップを増やす
+  ans += 1
 end
+
+puts ans

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+task=$1
+if [ -z $task ]; then
+  echo "[error] Please specify task as argument."
+  echo "[error] e.g. bin/run abc150a"
+  exit 1
+fi
+
+matches=($(grep -Eo "[0-9]+|[^0-9]+" <<< $1))
+filepath=${matches[0]}/${matches[1]}/${matches[2]}.cpp
+
+echo "[info] Build ${filepath}"
+g++ $filepath --std=c++14
+if [ $? -eq 0 ]; then
+  echo "[info] Build is finished."
+else
+  echo "[error] Failed to build."
+  exit 1
+fi
+
+echo "[info] ${filepath} is running..."
+echo "[info] Wait for input."
+./a.out
+echo "[info] ${filepath} is finished."

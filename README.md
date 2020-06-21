@@ -10,6 +10,6 @@ $ direnv allow
 Now, let's enjoy coding.
 
 ```
-$ code abc/150/a.cpp
+$ code abc/150/a.cpp # Use your favorite editor.
 $ run abc150a
 ```
